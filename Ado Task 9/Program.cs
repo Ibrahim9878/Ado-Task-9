@@ -17,8 +17,8 @@ IAuthorRepository repo = new AuthorRepository(new SqlConnection(),
 //    new Author() {FirstName = "Maga",LastName = "Fetullayev"},
 //    new Author() {FirstName = "Ibrahim",LastName = "Talibli"}
 //});
-//repo.RemoveByIdArray([15,16,17]);
-//repo.RemoveRange(18, 20);
+//repo.RemoveByIdArray([15, 16, 17]);
+//repo.RemoveRange(21, 23);
 repo.UpdateAuthors(new List<Author>()
 {
     new Author() {Id = 1,FirstName = "Huseyn",LastName = "Memmedov"},

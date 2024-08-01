@@ -32,10 +32,7 @@ SELECT CAST(SCOPE_IDENTITY() AS int)";
         string sql;
         foreach (var author in authors) 
         {
-            sql =
-                @"INSERT INTO Authors(FirstName, LastName) 
-                VALUES(@FirstName,@LastName)";
-            _db.Query(sql, new { @FirstName = author.FirstName, @LastName = author.LastName });
+            Add(author);
         }
     }
 
@@ -60,7 +57,7 @@ SELECT CAST(SCOPE_IDENTITY() AS int)";
     {
         foreach (int id in ids)
         {
-            _db.Execute("DELETE FROM Authors WHERE Id=@Id", new { @Id = id });
+            Remove(id);
         }
     
     }
@@ -69,7 +66,7 @@ SELECT CAST(SCOPE_IDENTITY() AS int)";
     {
         for (int i = start; i <= end; i++)
         {
-            _db.Execute("DELETE FROM Authors WHERE Id=@Id", new { @Id = i });
+            Remove(i);
         }
     }
 
@@ -84,8 +81,7 @@ SELECT CAST(SCOPE_IDENTITY() AS int)";
     {
         foreach(Author author in authors)
         {
-            var sql = "UPDATE Authors SET FirstName =@FirstName, LastName=@LastName WHERE Id=@Id";
-            _db.Execute(sql, author);
+            Update(author);
         }
     }
 }
